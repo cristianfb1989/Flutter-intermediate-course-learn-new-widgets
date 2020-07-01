@@ -1,0 +1,4 @@
+#Wed Jul 01 13:39:08 ART 2020
+base.0=D\:\\MEGA\\Flutter\\Flutter intermediate course learn new widgets\\curso_udemy\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
