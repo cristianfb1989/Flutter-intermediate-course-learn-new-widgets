@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final responsive = Responsive(context);
     return MaterialApp(
       title: 'Aplicacion con diferentes pantallas',
       theme: ThemeData(
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => MyApp(),
+        //'/': (context) => MyHomePage(),
         '/expandedScreen': (context) => ExpandedFinal(),
         '/gridView': (context) => GridViewExample(),
         '/iOSScreen': (context) => IOSScreenExample(),
@@ -40,113 +39,137 @@ class MyApp extends StatelessWidget {
         '/sliversApp': (context) => SilverAppBarScreen(),
         '/stackScreen': (context) => StackScreen(),
       },
-      home: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con Expanded & Flex"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/expandedScreen');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con Grid View"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/gridView');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con widgets para iOS y Android"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/iOSScreen');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Ejemplo de utilizacion de JSON"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/jsonApp');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con formatos de notificaciones"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/notificacionesScreen');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Ejemplo de Page View"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/pageViewScreen');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Utilizacion de Shared Preferences"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sharedPref');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con SliversAppBar"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sliversApp');
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Pantalla con Stack"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/stackScreen');
-                }),
-          ),
-        ],
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Aplicacion con diferentes pantallas"),
       ),
-      //ExpandedFinal()
-      //GridViewExample()
-      //MyHomePage(title: 'Flutter Demo Home Page'),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 80,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con Expanded & Flex"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/expandedScreen');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con Grid View"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/gridView');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con widgets para iOS y Android"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/iOSScreen');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Ejemplo de utilizacion de JSON"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/jsonApp');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con formatos de notificaciones"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/notificacionesScreen');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Ejemplo de Page View"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/pageViewScreen');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Utilizacion de Shared Preferences"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/sharedPref');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con SliversAppBar"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/sliversApp');
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: MaterialButton(
+                      child: Text("Pantalla con Stack"),
+                      color: Colors.lightBlue,
+                      textColor: Colors.white,
+                      splashColor: Colors.green,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/stackScreen');
+                      }),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -50,48 +50,45 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
   @override
   Widget build(BuildContext context) {
     final responsive = Responsive(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Notifications"),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Snackbar"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  showSnackBar();
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Modal bottom"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  showBottom();
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.all(responsive.ip(0.8)),
-            child: MaterialButton(
-                child: Text("Simple Dialog"),
-                color: Colors.lightBlue,
-                textColor: Colors.white,
-                splashColor: Colors.green,
-                onPressed: () {
-                  showSimpleDialog();
-                }),
-          )
-        ],
-      ),
+    return Container(
+      color: Colors.white,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            SizedBox(height: responsive.hp(10)),
+            Padding(
+              padding: EdgeInsets.all(responsive.ip(0.8)),
+              child: MaterialButton(
+                  child: Text("Snackbar"),
+                  color: Colors.lightBlue,
+                  textColor: Colors.white,
+                  splashColor: Colors.green,
+                  onPressed: () {
+                    showSnackBar();
+                  }),
+            ),
+            Padding(
+              padding: EdgeInsets.all(responsive.ip(0.8)),
+              child: MaterialButton(
+                  child: Text("Modal bottom"),
+                  color: Colors.lightBlue,
+                  textColor: Colors.white,
+                  splashColor: Colors.green,
+                  onPressed: () {
+                    showBottom();
+                  }),
+            ),
+            Padding(
+                padding: EdgeInsets.all(responsive.ip(0.8)),
+                child: MaterialButton(
+                    child: Text("Simple Dialog"),
+                    color: Colors.lightBlue,
+                    textColor: Colors.white,
+                    splashColor: Colors.green,
+                    onPressed: () {
+                      showSimpleDialog();
+                    }))
+          ]),
     );
   }
 }

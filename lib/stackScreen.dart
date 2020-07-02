@@ -21,7 +21,7 @@ class _StackScreenState extends State<StackScreen> {
           Image(
               width: responsive.wp(20),
               height: responsive.hp(20),
-              image: AssetImage("images/bongocat.png"))
+              image: AssetImage("assets/images/bongocat.png"))
         ],
       ),
     );
