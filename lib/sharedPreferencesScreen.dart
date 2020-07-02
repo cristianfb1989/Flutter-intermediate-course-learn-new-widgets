@@ -20,7 +20,7 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
   Future<Null> storeInput(String input) async {
     await SharedPreferences.getInstance().then((prefs) {
       setState(() {
-        prefs.setString("nombreUsuario", input);
+        prefs.setString("username", input);
       });
     });
   }
@@ -28,7 +28,7 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
   Future<Null> getSharedPrefs() async {
     await SharedPreferences.getInstance().then((prefs) {
       setState(() {
-        username = prefs.get("nombreUsuario");
+        username = prefs.get("username");
         username = input;
       });
     });

@@ -1,3 +1,4 @@
+import 'package:curso_udemy/util/responsive.dart';
 import 'package:flutter/material.dart';
 
 class NotificacionScreen extends StatefulWidget {
@@ -17,8 +18,9 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
+          final responsive = Responsive(context);
           return Container(
-            height: 100,
+            height: responsive.hp(10),
             color: Colors.deepOrange,
             child: Center(
               child: Text("Bottom sheet Modal"),
@@ -47,6 +49,7 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Notifications"),
@@ -55,7 +58,7 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(responsive.ip(0.8)),
             child: MaterialButton(
                 child: Text("Snackbar"),
                 color: Colors.lightBlue,
@@ -66,7 +69,7 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
                 }),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(responsive.ip(0.8)),
             child: MaterialButton(
                 child: Text("Modal bottom"),
                 color: Colors.lightBlue,
@@ -77,7 +80,7 @@ class _NotificacionScreenState extends State<NotificacionScreen> {
                 }),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(responsive.ip(0.8)),
             child: MaterialButton(
                 child: Text("Simple Dialog"),
                 color: Colors.lightBlue,

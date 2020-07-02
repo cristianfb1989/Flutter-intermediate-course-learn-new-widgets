@@ -1,3 +1,4 @@
+import 'package:curso_udemy/util/responsive.dart';
 import 'package:flutter/material.dart';
 
 class PageViewExample extends StatefulWidget {
@@ -7,8 +8,10 @@ class PageViewExample extends StatefulWidget {
 
 class _PageViewExampleState extends State<PageViewExample> {
   Widget buildPage(String text, Color color) {
+    final responsive = Responsive(context);
     return Center(
-        child: Text(text, style: TextStyle(fontSize: 80, color: color)));
+        child: Text(text,
+            style: TextStyle(fontSize: responsive.ip(0.8), color: color)));
   }
 
   Widget buildPageView() {

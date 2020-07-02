@@ -1,3 +1,4 @@
+import 'package:curso_udemy/util/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -28,12 +29,13 @@ class _JsonExampleState extends State<JsonExample> {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return Scaffold(
         appBar: AppBar(
           title: Text("Json"),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(responsive.ip(1.6)),
             child: FutureBuilder(
                 future: showPosts(),
                 builder: (context, snapshot) {
@@ -43,16 +45,18 @@ class _JsonExampleState extends State<JsonExample> {
                         itemBuilder: (context, index) {
                           return Card(
                               child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(responsive.ip(0.8)),
                                   child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,
                                       children: <Widget>[
                                         Text(snapshot.data[index].title,
-                                            style: TextStyle(fontSize: 30)),
+                                            style: TextStyle(
+                                                fontSize: responsive.ip(3))),
                                         Divider(),
                                         Text(snapshot.data[index].text,
-                                            style: TextStyle(fontSize: 15)),
+                                            style: TextStyle(
+                                                fontSize: responsive.ip(1.5))),
                                         Divider(),
                                         RaisedButton(
                                             child: Text("Read more..."),
@@ -67,4 +71,3 @@ class _JsonExampleState extends State<JsonExample> {
                 })));
   }
 }
-//Flutter intermediate course learn new widgets
