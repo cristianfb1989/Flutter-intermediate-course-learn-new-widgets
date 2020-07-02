@@ -1,4 +1,13 @@
 import 'package:curso_udemy/expandedFlexScreen.dart';
+import 'package:curso_udemy/gridViewScreen.dart';
+import 'package:curso_udemy/iOSScreen.dart';
+import 'package:curso_udemy/jsonApp.dart';
+import 'package:curso_udemy/notificacionScreen.dart';
+import 'package:curso_udemy/pageViewScreen.dart';
+import 'package:curso_udemy/sharedPreferencesScreen.dart';
+import 'package:curso_udemy/silverAppBarScreen.dart';
+import 'package:curso_udemy/stackScreen.dart';
+import 'package:curso_udemy/util/responsive.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,113 +19,134 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
-          // This makes the visual density adapt to the platform that you run
-          // the app on. For desktop platforms, the controls will be smaller and
-          // closer together (more dense) than on mobile platforms.
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: ExpandedFinal()
-        //GridViewExample()
-        //MyHomePage(title: 'Flutter Demo Home Page'),
-        );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      title: 'Aplicacion con diferentes pantallas',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyApp(),
+        '/expandedScreen': (context) => ExpandedFinal(),
+        '/gridView': (context) => GridViewExample(),
+        '/iOSScreen': (context) => IOSScreenExample(),
+        '/jsonApp': (context) => JsonExample(),
+        '/notificacionesScreen': (context) => NotificacionScreen(),
+        '/pageViewScreen': (context) => PageViewExample(),
+        '/sharedPref': (context) => SharedPreferencesScreen(),
+        '/sliversApp': (context) => SilverAppBarScreen(),
+        '/stackScreen': (context) => StackScreen(),
+      },
+      home: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con Expanded & Flex"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/expandedScreen');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con Grid View"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/gridView');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con widgets para iOS y Android"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/iOSScreen');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Ejemplo de utilizacion de JSON"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/jsonApp');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con formatos de notificaciones"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/notificacionesScreen');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Ejemplo de Page View"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/pageViewScreen');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Utilizacion de Shared Preferences"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/sharedPref');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con SliversAppBar"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/sliversApp');
+                }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(responsive.ip(0.8)),
+            child: MaterialButton(
+                child: Text("Pantalla con Stack"),
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/stackScreen');
+                }),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      //ExpandedFinal()
+      //GridViewExample()
+      //MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
